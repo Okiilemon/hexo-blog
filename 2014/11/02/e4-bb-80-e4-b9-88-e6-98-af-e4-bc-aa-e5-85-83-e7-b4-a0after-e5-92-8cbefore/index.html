@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>什么是伪元素:after和:before | Okiilemon</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~
+在学会使用伪元素之前，先来了解一下什么是伪元素以及它们的工作原理。
+很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是伪元素:after和:before">
+<meta property="og:url" content="http://www.fehacker.com/2014/11/02/e4-bb-80-e4-b9-88-e6-98-af-e4-bc-aa-e5-85-83-e7-b4-a0after-e5-92-8cbefore/index.html">
+<meta property="og:site_name" content="Okiilemon">
+<meta property="og:description" content="或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~
+在学会使用伪元素之前，先来了解一下什么是伪元素以及它们的工作原理。
+很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了">
+<meta property="og:updated_time" content="2015-11-19T09:54:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="什么是伪元素:after和:before">
+<meta name="twitter:description" content="或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~
+在学会使用伪元素之前，先来了解一下什么是伪元素以及它们的工作原理。
+很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了">
+  
+    <link rel="alternative" href="/atom.xml" title="Okiilemon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">Okiilemon</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.fehacker.com"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-e4-bb-80-e4-b9-88-e6-98-af-e4-bc-aa-e5-85-83-e7-b4-a0after-e5-92-8cbefore" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2014/11/02/e4-bb-80-e4-b9-88-e6-98-af-e4-bc-aa-e5-85-83-e7-b4-a0after-e5-92-8cbefore/" class="article-date">
+  <time datetime="2014-11-02T04:24:23.000Z" itemprop="datePublished">2014-11-02</time>
+</a>
+		</span>
+		<span class="meta-elements author">wuxiaohan</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      什么是伪元素:after和:before
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~</p>
+<p>在学会使用伪元素之前，先来了解一下什么是伪元素以及它们的工作原理。</p>
+<p>很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了去达成我们的目的却和结构完全没关系，一名优秀的前端工程师是绝对不会这么干的。那么这个时候，伪元素就该闪亮登场了~ </p>
+<p>首先还是让我们来看看官方对伪元素的定义吧: <a href="http://www.w3.org/TR/selectors/#pseudo-elements" target="_blank" rel="external"><strong>Pseudo-elements</strong></a> </p>
+<p>额，为了照顾看见英文就头疼的同学，我尽力翻译一下吧：</p>
+<p>“伪元素在标记语言创建的DOM树之外创造了一种抽象（的对象）。例如：标记语言并不提供可以直接控制元素中第一行内容或第一个字这样的机制，而伪元素就允许开发人员去特指这些无法触及的内容；伪元素也提供了开发人员一种方法，可以特指一些原本在源文档（Dom树）中并不存在的内容（例如：:before 和 :after可以<strong>创建</strong>内容）。”</p>
+<p><strong>tip</strong>:关于双冒号还是单冒号的问题，双冒号::是CSS3的新语法，为了区分伪类和伪元素，但是IE8不兼容双冒号语法，所以如果要考虑到兼容IE建议使用单冒号，否则应当遵循最新规范的双冒号语法。</p>
+<p>具体用法：</p>
+<p>还是举个栗子最直观</p>
+<pre class="lang:css decode:true ">&lt;p&gt;Today is a fine day&lt;/p&gt;
+
+&lt;p&gt;
+  &lt;before&gt; Yes &lt;/before&gt;
+   Today is a fine day
+  &lt;after&gt;  No  &lt;/after&gt;
+&lt;/p&gt;</pre> 
+
+<p>上面3-7行的代码是以下CSS转换成标记语言的等同效果</p>
+<pre class="lang:css decode:true ">p:before{
+  content:"Yes";
+}
+
+p:after{
+  content:"No";
+}</pre> 
+
+<p>也就是说，:before是在元素的内容之前插入/创建一个虚拟的元素，:after 是在元素的内容之后插入/创建一个虚拟的元素 （我是这么理解的：相当于插入一个first-child和last-child,如果这么理解不恰当，请指出~）</p>
+<p>其中，content属性是必须声明的，它的值可以是：</p>
+<p>1.字符串：eg. content:”abcd”;<br>2.图片：eg. content:url(…);<br>  注：图片会按实际尺寸插入并且无法改变其大小。<br>3.空：eg. content:” “;<br>  感觉这个用途是最广泛的，可以发挥你的想象让这个空胜于有。比如可以设为空然后给伪元素设置背景图像，这样就可以修改图片的大小了。<br>4.计数器：eg. content: counter(li); 在列表时计算行数非常方便。</p>
+<p><strong>tip:</strong>伪元素默认生成的是一个<strong>内联元素</strong>，可以根据需要设置display:block;</p>
+<p>浏览器支持情况：</p>
+<p>1.Firefox 3.5- 不支持伪元素的绝对定位。<br>2.Opera 9.2里，伪元素里的空格会显示，如同在pre里一样。<br>3.IE 8 不支持伪元素里的z-index</p>
+<p>今天就介绍到这里，在下篇文章中将向大家展示一些伪元素的妙用和那些酷炫效果。</p>
+<p>文章参考：</p>
+<p><a href="http://www.tinghaige.com/understanding-pseudo-element-before-and-after.html" title="理解伪元素:Before和:After" target="_blank" rel="external">理解伪元素:Before和:After</a><br><a href="http://ithelp.ithome.com.tw/question/10128451" title="CSS沒有極限 - 別忘了偽元素" target="_blank" rel="external">CSS沒有極限 - 別忘了偽元素</a><br><a href="http://www.webhek.com/after-before/" title="伪元素::after和::before" target="_blank" rel="external">伪元素::after和::before</a></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML-CSS/">HTML/CSS</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/19/js-e4-b8-ad-e5-80-bc-e7-9a-84-e8-ae-bf-e9-97-ae-e4-b8-8e-e5-8f-82-e6-95-b0-e4-bc-a0-e9-80-92-e7-9a-84-e9-97-ae-e9-a2-98-ef-bc-88call-by-value-call-by-reference-call-by-sharing-ef-bc-89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript中值的访问与参数传递问题
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:www.fehacker.com">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">Okiilemon</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 wuxiaohan<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>

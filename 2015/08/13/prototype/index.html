@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>__proto__（隐式原型）与prototype（显式原型） | Okiilemon</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="1. 是什么
+显式原型 explicit prototype property：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。Note：通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性。
+
+NOTE Function objects created using Function.prototype">
+<meta property="og:type" content="article">
+<meta property="og:title" content="__proto__（隐式原型）与prototype（显式原型）">
+<meta property="og:url" content="http://www.fehacker.com/2015/08/13/prototype/index.html">
+<meta property="og:site_name" content="Okiilemon">
+<meta property="og:description" content="1. 是什么
+显式原型 explicit prototype property：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。Note：通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性。
+
+NOTE Function objects created using Function.prototype">
+<meta property="og:updated_time" content="2015-11-19T09:54:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="__proto__（隐式原型）与prototype（显式原型）">
+<meta name="twitter:description" content="1. 是什么
+显式原型 explicit prototype property：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。Note：通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性。
+
+NOTE Function objects created using Function.prototype">
+  
+    <link rel="alternative" href="/atom.xml" title="Okiilemon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">Okiilemon</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.fehacker.com"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-prototype" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/08/13/prototype/" class="article-date">
+  <time datetime="2015-08-13T03:58:57.000Z" itemprop="datePublished">2015-08-13</time>
+</a>
+		</span>
+		<span class="meta-elements author">wuxiaohan</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      __proto__（隐式原型）与prototype（显式原型）
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h3 id="1-_是什么"><strong>1. 是什么</strong></h3><ul>
+<li><p>显式原型 explicit prototype property：每一个<strong>函数</strong>在创建之后都会拥有一个名为<strong>prototype</strong>的属性，这个属性指向函数的原型对象。<br>Note：通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性。</p>
+<blockquote>
+<p>NOTE Function objects created using Function.prototype.bind do not have a prototype property or the [[Code]], [[FormalParameters]], and [[Scope]] internal properties. ”—– <a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.3.4.5" target="_blank" rel="external">ECMA262 15.3.4.5</a></p>
+</blockquote>
+</li>
+<li><p>隐式原型 implicit prototype link：JavaScript中任意对象都有一个内置属性[[prototype]]，在ES5之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过<strong>proto</strong>来访问。ES5中有了对于这个内置属性标准的Get方法Object.getPrototypeOf().Note: Object.prototype 这个对象是个例外，它的<strong>proto</strong>值为null</p>
+</li>
+<li>二者的关系：隐式原型指向<strong>创建</strong>这个对象的函数(constructor)的prototype</li>
+</ul>
+<h3 id="2-_作用是什么"><strong>2. 作用是什么</strong></h3><ul>
+<li><p>显式原型的作用：用来实现基于原型的继承与属性的共享。</p>
+<blockquote>
+<p>Each constructor is a function that has <strong>a property named “prototype” that is used to implement prototype-based inheritance and shared properties.</strong> —-<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-4.2.1" target="_blank" rel="external">ECMA262 4.2.1</a></p>
+</blockquote>
+</li>
+<li><p>隐式原型的作用：构成原型链，同样用于实现基于原型的继承。举个例子，当我们访问obj这个对象中的x属性时，如果在obj中找不到，那么就会沿着<strong>proto</strong>依次查找。</p>
+<blockquote>
+<p>”Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s “prototype” —-<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-4.2.1" target="_blank" rel="external">ECMA262 4.2.1</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-_proto的指向"><strong>3. <strong>proto</strong>的指向</strong></h3><p><strong>proto</strong>的指向到底如何判断呢？根据ECMA定义 ‘to the value of its constructor’s “prototype” ’ —-指向创建这个对象的函数（这里且称为构造函数吧，虽然《You Don’t Know JS》的作者一直反复强调JS中没有构造函数，只有构造函数调用）的显式原型。所以关键的点在于找到创建这个对象的构造函数，接下来就来看一下JS中对象被创建的方式，一眼看过去似乎有三种方式：</p>
+<p>（1）对象字面量的方式</p>
+<p>（2）new 的方式</p>
+<p>（3）ES5中的Object.create()</p>
+<p>但是我认为本质上只有一种方式，也就是通过new来创建。为什么这么说呢，首先字面量的方式是一种为了开发人员更方便创建对象的一个语法糖，本质就是 var o = new Object(); o.xx = xx;o.yy=yy; 再来看看Object.create(),这是ES5中新增的方法，在这之前这被称为原型式继承，</p>
+<p>“ 道格拉斯在2006年写了一篇文章，题为 Prototypal Inheritance In JavaScript。在这篇文章中，他介绍了一种实现继承的方法，这种方法并没有使用严格意义上的构造函数。他的想法是借助原型可以基于已有的对象创建新对象，同时还不比因此创建自定义类型，为了达到这个目的，他给出了如下函数: “</p>
+<p><pre class="lang:js decode:true ">function object(o){ </pre></p>
+<p>function F(){} </p>
+<p>F.prototype = o; </p>
+<p>return new F();</p>
+<p>}<br>– 《JavaScript高级程序设计》P169</p>
+<p>所以从实现代码 return new F() 中我们可以看到，这依然是通过new来创建的。不同之处在于由Object.create()创建出来的对象没有构造函数，看到这里你是不是要问，没有构造函数我怎么知道它的<strong>proto</strong>指向哪里呢，其实这里说它没有构造函数是指在Object.create()函数外部我们不能访问到它的构造函数，然而在函数内部实现中是有的，它短暂地存在了那么一会儿。假设我们现在就在函数内部，可以看到对象的构造函数是F, 现在 var f = new F(); f.<strong>proto</strong> === F.prototype === o,因此由Object.create(o)创建出来的对象它的隐式原型指向o.好了，对象的创建方式分析完了，现在你应该能够判断一个对象的<strong>proto</strong>指向谁了。</p>
+<p>好吧，还是举一些一眼看过去比较疑惑的例子来巩固一下。</p>
+<ul>
+<li><p>构造函数的显示原型的隐式原型：</p>
+<ul>
+<li>内建对象(built-in object)：比如Array（），Array.prototype.<strong>proto</strong>指向什么？Array.prototype也是一个对象，对象就是由 Object（）这个构造函数创建的，因此Array.prototype.<strong>proto</strong> === Object.prototype //true，或者也可以这么理解，所有的内建对象都是由Object()创建而来。</li>
+<li><p>自定义对象：</p>
+<pre><code>*   默认情况下：<span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>{}; <span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(); 这时，Foo.prototype.__proto__ === <span class="built_in">Object</span>.prototype,理由同上
+</code></pre><ul>
+<li><p>其他情况：</p>
+<pre><code>*   <span class="function"><span class="keyword">function</span> <span class="title">Bar</span><span class="params">()</span></span>{}; 这时我们想让Foo继承Bar，于是 Foo.prototype = <span class="keyword">new</span> Bar();这个时候 Foo.prototype.__proto__ === Bar.prototype
+</code></pre><ul>
+<li>我们不想让Foo继承谁，但是我们要自己重新定义Foo.prototype;比如：Foo.prototype = {a:10,b:-10},这种方式就是用了对象字面量的方式来创建一个对象，根据前文所述 Foo.prototype.<strong>proto</strong> === Object.prototype</li>
+<li>注： 以上两种情况都等于完全重写了Foo.prototype，所以Foo.prototype.constructor也跟着改变了，于是乎constructor这个属性和原来的构造函数Foo（）也就切断了联系。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>构造函数的隐式原型</p>
+<ul>
+<li>既然是构造函数那么它就是Function（）的实例，因此也就指向Function.prototyp<br>比如 Object.<strong>proto</strong> === Function.prototype</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-_instanceof"><strong>4. instanceof</strong></h3><p>instanceof 操作符的内部实现机制和隐式原型、显式原型有直接的关系。instanceof的左值一般是一个对象，右值一般是一个构造函数，用来判断左值是否是右值的实例。它的内部实现原理是这样的： 设 L instanceof R , 通过判断 L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype,最终返回true or false，也就是沿着L的<strong>proto</strong>一直寻找到原型链末端，直到等于R.prototype为止。知道了这个也就知道为什么以下这些奇怪的表达式为什么会得到相应的值了</p>
+<pre><code><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true </span>
+ <span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">// true </span>
+ <span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">//true</span>
+ <span class="built_in">Object</span>  <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span>
+ <span class="built_in">Number</span> <span class="keyword">instanceof</span> <span class="built_in">Number</span> <span class="comment">//false</span>
+</code></pre><p>文章参考： <a href="https://www.ibm.com/developerworks/cn/web/1306_jiangjj_jsinstanceof/" target="_blank" rel="external">JavaScript instanceof 运算符深入剖析</a></p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </div>
+
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/04/05/css-best-practice/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          【译】CSS 最佳实践
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:www.fehacker.com">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">Okiilemon</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 wuxiaohan<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>
