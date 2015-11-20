@@ -14,7 +14,7 @@
 原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript中值的访问与参数传递问题">
-<meta property="og:url" content="http://www.fehacker.com/2014/12/19/js-e4-b8-ad-e5-80-bc-e7-9a-84-e8-ae-bf-e9-97-ae-e4-b8-8e-e5-8f-82-e6-95-b0-e4-bc-a0-e9-80-92-e7-9a-84-e9-97-ae-e9-a2-98-ef-bc-88call-by-value-call-by-reference-call-by-sharing-ef-bc-89/index.html">
+<meta property="og:url" content="http://www.fehacker.com/2014/12/19/call-by-sharing/index.html">
 <meta property="og:site_name" content="Okiilemon">
 <meta property="og:description" content="数据类型在 javascript 中数据类型可以分为两类：
 
@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://m1.yea.im/43P.jpg">
 <meta property="og:image" content="http://m1.yea.im/43Q.jpg">
 <meta property="og:image" content="http://m1.yea.im/43P.jpg">
-<meta property="og:updated_time" content="2015-11-20T14:50:39.000Z">
+<meta property="og:updated_time" content="2015-11-20T16:26:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript中值的访问与参数传递问题">
 <meta name="twitter:description" content="数据类型在 javascript 中数据类型可以分为两类：
@@ -68,10 +68,10 @@
 	</div>
 </header>
     <div id="main">
-      <article id="post-js-e4-b8-ad-e5-80-bc-e7-9a-84-e8-ae-bf-e9-97-ae-e4-b8-8e-e5-8f-82-e6-95-b0-e4-bc-a0-e9-80-92-e7-9a-84-e9-97-ae-e9-a2-98-ef-bc-88call-by-value-call-by-reference-call-by-sharing-ef-bc-89" class="post">
+      <article id="post-call-by-sharing" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
-			<a href="/2014/12/19/js-e4-b8-ad-e5-80-bc-e7-9a-84-e8-ae-bf-e9-97-ae-e4-b8-8e-e5-8f-82-e6-95-b0-e4-bc-a0-e9-80-92-e7-9a-84-e9-97-ae-e9-a2-98-ef-bc-88call-by-value-call-by-reference-call-by-sharing-ef-bc-89/" class="article-date">
+			<a href="/2014/12/19/call-by-sharing/" class="article-date">
   <time datetime="2014-12-19T05:11:50.000Z" itemprop="datePublished">2014-12-19</time>
 </a>
 		</span>
@@ -112,15 +112,10 @@
 <h3 id="参数传递的不同">参数传递的不同</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都<strong>是按值来传递</strong>的。但是为什么涉及到原始类型与引用类型的值时仍然有区别呢，还不就是因为内存分配时的差别。 （我对比了一下，这里和复制变量时遵循的机制完全一样的嘛，你可以简单地理解为传递参数的时候，就是把实参复制给形参的过程）</p>
 <ul>
 <li>原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。</li>
-<li>引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点你要时刻铭记在心！因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象呀。或许我这么说了以后你对书上的例子还是有点不太理解，那么请看图吧：<br><img src="http://m1.yea.im/43P.jpg" alt="image"><br><span style="line-height: 1.6;">所以，如果是按引用传递的话，是把第二格中的内容（也就是变量本身）整个传递进去（就不会有第四格的存在了）。但事实是变量把它里面的值传递（复制）给了参数，让这个参数也指向原对象。因此如果在函数内部给这个参数赋值另一个对象时，这个参数就会更改它的值为新对象的内存地址指向新的对象，但此时原来的变量仍然指向原来的对象，这时候他们是相互独立的；但如果这个参数是改变对象内部的属性的话，这个改变会体现在外部，因为他们共同指向的这个对象被修改了呀！来看下面这个例子吧：（传说中的call by sharing）</span><br><pre class="font-size:16 lang:js decode:true"><br>var obj1 = {<br>value:’111’<br>};</pre></li>
+<li>引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点你要时刻铭记在心！因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象呀。或许我这么说了以后你对书上的例子还是有点不太理解，那么请看图吧：<br><img src="http://m1.yea.im/43P.jpg" alt="image"><br><span style="line-height: 1.6;">所以，如果是按引用传递的话，是把第二格中的内容（也就是变量本身）整个传递进去（就不会有第四格的存在了）。但事实是变量把它里面的值传递（复制）给了参数，让这个参数也指向原对象。因此如果在函数内部给这个参数赋值另一个对象时，这个参数就会更改它的值为新对象的内存地址指向新的对象，但此时原来的变量仍然指向原来的对象，这时候他们是相互独立的；但如果这个参数是改变对象内部的属性的话，这个改变会体现在外部，因为他们共同指向的这个对象被修改了呀！来看下面这个例子吧：（传说中的call by sharing）</span><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">  		<span class="keyword">value</span>:<span class="string">'111'</span></span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">  		<span class="keyword">value</span>:<span class="string">'222'</span></span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="function">function <span class="title">changeStuff</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  		obj.<span class="keyword">value</span> = <span class="string">'333'</span>;</span><br><span class="line">  		obj = obj2;</span><br><span class="line">  		<span class="keyword">return</span> obj.<span class="keyword">value</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> foo = changeStuff(obj1);</span><br><span class="line"></span><br><span class="line">	console.log(foo);<span class="comment">// '222' 参数obj指向了新的对象obj2</span></span><br><span class="line">	console.log(obj1.<span class="keyword">value</span>);</span><br><span class="line"><span class="comment">/* '333' obj1仍然指向原来的对象,之所以value改变了,</span><br><span class="line"> *是因为changeStuff里的第一条语句，这个时候obj是指向obj1的 .</span><br><span class="line"> *再啰嗦一句，如果是按引用传递的话，这个时候obj1.value应该是等于'222'的</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>var obj2 = {<br>  value:’222’<br>};</p>
-<p>function changeStuff(obj){<br>  obj.value = ‘333’;<br>  obj = obj2;<br>  return obj.value;<br>}</p>
-<p>var foo = changeStuff(obj1);</p>
-<p>console.log(foo);// ‘222’ 参数obj指向了新的对象obj2<br>console.log(obj1.value);</p>
-<p>/<em> ‘333’ obj1仍然指向原来的对象,之所以value改变了,
- </em>是因为changeStuff里的第一条语句，这个时候obj是指向obj1的 .<br> <em>再啰嗦一句，如果是按引用传递的话，这个时候obj1.value应该是等于’222’的
-</em>/<br>好了，以上就是关于这个问题的全部解释了。</p>
+<p>好了，以上就是关于这个问题的全部解释了。</p>
 <p>各位有兴趣的话可以去了解一下call by value ,call by reference call by sharing 等函数传递的机制<a href="http://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_sharing" target="_blank" rel="external">call by sharing</a></p>
 <p>还有stackoverflow上对于函数传递的这个问题解释得相当精辟，值得一看。（下面有链接）</p>
 <p>参考：</p>
@@ -160,7 +155,7 @@
     </a>
   
   
-    <a href="/2014/11/02/e4-bb-80-e4-b9-88-e6-98-af-e4-bc-aa-e5-85-83-e7-b4-a0after-e5-92-8cbefore/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/11/02/pseudo-element/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">
         
