@@ -23,11 +23,11 @@
 
 声明变量时不同的内存分配
 原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存">
-<meta property="og:image" content="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219172459.png">
-<meta property="og:image" content="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219183415.png">
-<meta property="og:image" content="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219184123.png">
-<meta property="og:image" content="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219203926.png">
-<meta property="og:updated_time" content="2015-11-19T09:54:22.000Z">
+<meta property="og:image" content="http://m1.yea.im/43N.jpg">
+<meta property="og:image" content="http://m1.yea.im/43P.jpg">
+<meta property="og:image" content="http://m1.yea.im/43Q.jpg">
+<meta property="og:image" content="http://m1.yea.im/43P.jpg">
+<meta property="og:updated_time" content="2015-11-20T14:50:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript中值的访问与参数传递问题">
 <meta name="twitter:description" content="数据类型在 javascript 中数据类型可以分为两类：
@@ -99,23 +99,21 @@
 </ul>
 <h3 id="声明变量时不同的内存分配">声明变量时不同的内存分配</h3><ul>
 <li>原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在<strong>变量访问的位置</strong>。这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域 - 栈中。这样存储便于迅速查寻变量的值。</li>
-<li>引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。<br><span style="line-height: 1.6;">                                </span><a href="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219172459.png" target="_blank" rel="external"><img src="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219172459.png" alt="QQ截图20141219172459"></a></li>
+<li>引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。<br><img src="http://m1.yea.im/43N.jpg" alt="image"></li>
 </ul>
 <h3 id="不同的内存分配机制也带来了不同的访问机制">不同的内存分配机制也带来了不同的访问机制</h3><p>在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的<strong>按引用访问</strong>。而原始类型的值则是可以直接访问到的。</p>
 <h3 id="复制变量时的不同">复制变量时的不同</h3><ul>
-<li><p>原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br><a href="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219183415.png" target="_blank" rel="external"><img src="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219183415.png" alt="QQ截图20141219183415"></a></p>
+<li><p>原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br><img src="http://m1.yea.im/43P.jpg" alt="image"></p>
 </li>
 <li><p>引用值：在将一个保存着对象内存地址的变量复制给另一个变量时，会把这个内存地址赋值给新变量，也就是说这两个变量都指向了堆内存中的同一个对象，他们中任何一个作出的改变都会反映在另一个身上。（这里要理解的一点就是，复制对象时并不会在堆内存中新生成一个一模一样的对象，只是多了一个保存指向这个对象指针的变量罢了）<br>&nbsp;</p>
 </li>
 </ul>
-<p><a href="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219184123.png" target="_blank" rel="external"><img src="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219184123.png" alt="QQ截图20141219184123"></a></p>
+<p><img src="http://m1.yea.im/43Q.jpg" alt="image"></p>
 <h3 id="参数传递的不同">参数传递的不同</h3><p>首先我们应该明确一点：ECMAScript中所有函数的参数都<strong>是按值来传递</strong>的。但是为什么涉及到原始类型与引用类型的值时仍然有区别呢，还不就是因为内存分配时的差别。 （我对比了一下，这里和复制变量时遵循的机制完全一样的嘛，你可以简单地理解为传递参数的时候，就是把实参复制给形参的过程）</p>
 <ul>
 <li>原始值：只是把变量里的值传递给参数，之后参数和这个变量互不影响。</li>
-<li>引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点你要时刻铭记在心！因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象呀。或许我这么说了以后你对书上的例子还是有点不太理解，那么请看图吧：<br><a href="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219203926.png" target="_blank" rel="external"><img src="http://fehacker.com/wp-content/uploads/2014/12/QQ截图20141219203926.png" alt="QQ截图20141219203926"></a></li>
+<li>引用值：对象变量它里面的值是这个对象在堆内存中的内存地址，这一点你要时刻铭记在心！因此它传递的值也就是这个内存地址，这也就是为什么函数内部对这个参数的修改会体现在外部的原因了，因为它们都指向同一个对象呀。或许我这么说了以后你对书上的例子还是有点不太理解，那么请看图吧：<br><img src="http://m1.yea.im/43P.jpg" alt="image"><br><span style="line-height: 1.6;">所以，如果是按引用传递的话，是把第二格中的内容（也就是变量本身）整个传递进去（就不会有第四格的存在了）。但事实是变量把它里面的值传递（复制）给了参数，让这个参数也指向原对象。因此如果在函数内部给这个参数赋值另一个对象时，这个参数就会更改它的值为新对象的内存地址指向新的对象，但此时原来的变量仍然指向原来的对象，这时候他们是相互独立的；但如果这个参数是改变对象内部的属性的话，这个改变会体现在外部，因为他们共同指向的这个对象被修改了呀！来看下面这个例子吧：（传说中的call by sharing）</span><br><pre class="font-size:16 lang:js decode:true"><br>var obj1 = {<br>value:’111’<br>};</pre></li>
 </ul>
-<p><span style="line-height: 1.6;">所以，如果是按引用传递的话，是把第二格中的内容（也就是变量本身）整个传递进去（就不会有第四格的存在了）。但事实是变量把它里面的值传递（复制）给了参数，让这个参数也指向原对象。因此如果在函数内部给这个参数赋值另一个对象时，这个参数就会更改它的值为新对象的内存地址指向新的对象，但此时原来的变量仍然指向原来的对象，这时候他们是相互独立的；但如果这个参数是改变对象内部的属性的话，这个改变会体现在外部，因为他们共同指向的这个对象被修改了呀！来看下面这个例子吧：（传说中的call by sharing）</span></p>
-<p><pre class="font-size:16 lang:js decode:true"><br>var obj1 = {<br>  value:’111’<br>};</pre></p>
 <p>var obj2 = {<br>  value:’222’<br>};</p>
 <p>function changeStuff(obj){<br>  obj.value = ‘333’;<br>  obj = obj2;<br>  return obj.value;<br>}</p>
 <p>var foo = changeStuff(obj1);</p>
