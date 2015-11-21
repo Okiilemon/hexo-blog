@@ -17,7 +17,7 @@ NOTE Function objects created using Function.prototype">
 显式原型 explicit prototype property：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。Note：通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性。
 
 NOTE Function objects created using Function.prototype">
-<meta property="og:updated_time" content="2015-11-21T08:09:22.000Z">
+<meta property="og:updated_time" content="2015-11-21T08:14:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="__proto__（隐式原型）与prototype（显式原型）">
 <meta name="twitter:description" content="1. 是什么
@@ -89,7 +89,9 @@ NOTE Function objects created using Function.prototype">
 </li>
 <li>二者的关系：隐式原型指向<strong>创建</strong>这个对象的函数(constructor)的prototype</li>
 </ul>
-<h3 id="2-_作用是什么"><strong>2. 作用是什么</strong></h3><ul>
+<a id="more"></a>
+<p>#</p>
+<h2 id="2-_作用是什么"><strong>2. 作用是什么</strong></h2><ul>
 <li><p>显式原型的作用：用来实现基于原型的继承与属性的共享。</p>
 <blockquote>
 <p>Each constructor is a function that has <strong>a property named “prototype” that is used to implement prototype-based inheritance and shared properties.</strong> —-<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-4.2.1" target="_blank" rel="external">ECMA262 4.2.1</a></p>
@@ -98,7 +100,6 @@ NOTE Function objects created using Function.prototype">
 <li><p>隐式原型的作用：构成原型链，同样用于实现基于原型的继承。举个例子，当我们访问obj这个对象中的x属性时，如果在obj中找不到，那么就会沿着<strong>proto</strong>依次查找。</p>
 <blockquote>
 <p>”Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s “prototype” —-<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-4.2.1" target="_blank" rel="external">ECMA262 4.2.1</a></p>
-<a id="more"></a>
 </blockquote>
 </li>
 </ul>
@@ -153,11 +154,11 @@ NOTE Function objects created using Function.prototype">
 <nav id="article-nav">
   
   
-    <a href="/2015/04/05/css-best-practice/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/03/19/javascript-the-core-ec-ecs-ao-vo/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">
         
-          【译】CSS 最佳实践
+          Javascript核心原理（一）执行环境、执行环境栈、变量对象、活动对象
         
       </div>
     </a>

@@ -81,15 +81,6 @@
 </li>
 <li>二者的关系：隐式原型指向<strong>创建</strong>这个对象的函数(constructor)的prototype</li>
 </ul>
-<h3 id="2-_作用是什么"><strong>2. 作用是什么</strong></h3><ul>
-<li><p>显式原型的作用：用来实现基于原型的继承与属性的共享。</p>
-<blockquote>
-<p>Each constructor is a function that has <strong>a property named “prototype” that is used to implement prototype-based inheritance and shared properties.</strong> —-<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-4.2.1">ECMA262 4.2.1</a></p>
-</blockquote>
-</li>
-<li><p>隐式原型的作用：构成原型链，同样用于实现基于原型的继承。举个例子，当我们访问obj这个对象中的x属性时，如果在obj中找不到，那么就会沿着<strong>proto</strong>依次查找。</p>
-<blockquote>
-<p>”Every object created by a constructor has an implicit reference (called the object’s prototype) to the value of its constructor’s “prototype” —-<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-4.2.1">ECMA262 4.2.1</a></p>
 			
 				<p class="article-more-link">
 					<a href="/2015/08/13/prototype/#more">Read More</a>
@@ -103,124 +94,6 @@
 				
   <div class="article-category">
     <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-css-best-practice" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/04/05/css-best-practice/" class="article-date">
-  <time datetime="2015-04-05T07:15:11.000Z" itemprop="datePublished">2015-04-05</time>
-</a>
-		</span>
-		<span class="meta-elements author">wuxiaohan</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/04/05/css-best-practice/">【译】CSS 最佳实践</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<p><div class="layout-wrapper-l2"></div></p>
-<p><div class="layout-wrapper-l3"></div></p>
-<p><div class="preview-panel"></div></p>
-<p><div class="preview-container"></div></p>
-<p><div id="preview-contents"></div></p>
-<p><div id="wmd-preview-section-216" class="wmd-preview-section preview-content"><a href="https://docs.google.com/presentation/d/1yo83Ifyh6QKF5GonrvLy6QZeWPUn8--EmAKly7ejcb4/edit#slide=id.gbb601923_010" target="_blank" rel="external">原文链接</a></div></p>
-<h3 id="目标：">目标：</h3><ol>
-<li>语义化（具有可读性）<br>一个CSS选择器的含义和目的应该是易于理解的</li>
-<li>模块化（可重用的，灵活的）<br>CSS的规则之间不应该有过于紧密的连接，并且在任何时候都尽可能可以重用</li>
-<li>高效（表现）<br>CSS选择器应该是高效的。这一点很重要，由于这有利于提升模块化，并且还可以有效降低文件的大小、减少HTTP请求次数。<br><div id="wmd-preview-section-255" class="wmd-preview-section preview-content">
-
-</div></li>
-</ol>
-<h3 id="一个典型的例子：’div_*_‘">一个典型的例子：’div * ‘</h3><ul>
-<li>过于地宽泛，不具有可读性和可搜索性</li>
-<li>不是模块化、可维护的，因为你不得不在其他地方多次重写样式来覆盖它</li>
-<li>低性能的，浏览器要为这条规则应用到的每一个元素都检查一遍<br>解决方案：使用一个类名！<br><div id="wmd-preview-section-461" class="wmd-preview-section preview-content">
-
-</div></li>
-</ul>
-<h3 id="可读性：">可读性：</h3><ul>
-<li>尤其注意类名的命名。 使用 ‘.error-content’ 代替’.content’,后者显得含糊不清，前者具有更好的可读性并且便于搜索。</li>
-<li>坚持注释。例如当你添加了一组类的时候，写下注释声明他们的用途，他们被用于做什么等等。</li>
-<li>你应该让别人像读懂编程语言那样读懂你的CSS，明白你的意图。<br><div id="wmd-preview-section-1027" class="wmd-preview-section preview-content">
-
-</div></li>
-</ul>
-<h3 id="模块化：">模块化：</h3><ul>
-<li><p>避免使用 ‘! important’</p>
-<ul>
-<li>人们用它来覆盖那些优先级/权重较高的样式。正确地解决方式是在一开始就避免使用过高的权重，这样你就没有用’!important’的必要了。</li>
-<li><p>如果你万不得已需要用’!important’,那么就写一个这样的用例</p>
-<pre class="lang:default decode:true">.equal-height-column {
-margin-bottom:-99999px !important;
-margin-bottom:-99999px !important;
-}</pre>
-
-<ul>
-<li>将容器与内容分离：<br>（1）子元素不应该依赖于父元素的样式<br>（2）如果子元素需要覆盖祖先元素样式，加一个类名，<br>例如 ：用’.alert-error’来代替’.followers .alert’<br>相应的HTML结构如下：<br><pre class="lang:default decode:true">&lt;div class = follwers”&gt;<br>&lt;div class = ‘alert alert error’&gt;<br>&lt;p class = ‘msg’&gt;….&lt;/p&gt;<br>&lt;/div&gt;<br>&lt;div&gt;</pre><br><div id="wmd-preview-section-1328" class="wmd-preview-section preview-content">
-
-</div></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="高效：">高效：</h3><ul>
-<li><p>CSS 的规则是由右至左地依次应用于元素</p>
-<ul>
-<li>对于页面上渲染的每一个元素，浏览器都会检查是否有相应的CSS规则应 用于它。</li>
-<li><p>例如：”div ul li {color:#fff;}”<br>对于页面上渲染的每一个 li 元素，都会检查一下它是否在一个 ul 中，然 后检查这个 ul 是否在一个 div 中。</p>
-<pre><code><span class="number">1.</span>  尽力尝试着最多使用两个选择器来定位你的元素。
-</code></pre><p>例如：’.user-list .list-item’<br>不要过于地修饰选择器</p>
-<ol>
-<li>你只需要直接使用”.user-list”而不是”ul.user-list”</li>
-<li>“.user-container .user-list user-link”<br>只需要”.user-container . user-link” 就可以了。<br><div id="wmd-preview-section-1399" class="wmd-preview-section preview-content">
-
-</div></li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="不要害怕重构">不要害怕重构</h3><ul>
-<li>确认一下是否某个样式来源于不同的文件 （注：不太明白这一条想表达的意思）</li>
-<li>检查一下是否有重复或者多余的CSS</li>
-<li>如果你看见了一些糟糕的地方，不要害怕去修缮它。这就是那些并不完美的样式如何坚挺地度过了这么多年的原因。<br><br><div id="wmd-preview-section-footnotes" class="preview-content"></div><br><br><br><br><br><div class="extension-preview-buttons closed animate"></div><br><br>&nbsp;</li>
-</ul>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTML-CSS/">HTML/CSS</a>
   </div>
 
 			</span>
@@ -264,13 +137,6 @@ margin-bottom:-99999px !important;
 		
 			<h2 id="前言"><strong>前言</strong></h2><p><span class="s1">之前在阅读《Javascript高级程序设计》「4.2执行环境及作用域的」时候，对相关的概念理解得并不是非常的透彻，只是懂了大概的意思。后来在看到「闭包」这一节时书中再一次提到了相关的概念，并且这些是充分理解闭包的必要背景知识，于是这一次我不能再略读了，必须彻彻底底地弄明白。啃了两天的相关文章、资料后，算是有一个比较清晰的认识了，现在记录下来，希望可以帮到同样对相关概念不熟悉的同学，也可以用作自己日后的回顾和修正。</span></p>
 <p><span class="s1">注：Execution Context 可以被翻译为「执行上下文」或者「 执行环境」，文中可能都会用到，大家记住是一个东西就可以了。</span></p>
-<h2 id="什么是执行环境（Execution_Context）？"><strong>什么是执行环境（Execution Context）？</strong></h2><p><em>“每当程序的执行流进入到一个可执行的代码时，就进入到了一个<strong>执行环境</strong>中。”</em></p>
-<p>执行环境是 ECMA-262 中用以区分不同的可执行代码的抽象概念<br>可执行代码的类型可以为分为：</p>
-<ul>
-<li>全局代码：程序载入后的默认环境，是运行在程序级别的代码。</li>
-<li>函数代码：当执行流进入一个函数后。</li>
-<li>Eval代码：Eval 内部的代码。</li>
-</ul>
 			
 				<p class="article-more-link">
 					<a href="/2015/03/19/javascript-the-core-ec-ecs-ao-vo/#more">Read More</a>
