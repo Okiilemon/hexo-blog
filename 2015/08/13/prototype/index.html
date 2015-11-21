@@ -17,7 +17,7 @@ NOTE Function objects created using Function.prototype">
 显式原型 explicit prototype property：每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象。Note：通过Function.prototype.bind方法构造出来的函数是个例外，它没有prototype属性。
 
 NOTE Function objects created using Function.prototype">
-<meta property="og:updated_time" content="2015-11-21T07:06:17.000Z">
+<meta property="og:updated_time" content="2015-11-21T07:16:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="__proto__（隐式原型）与prototype（显式原型）">
 <meta name="twitter:description" content="1. 是什么
@@ -117,23 +117,15 @@ NOTE Function objects created using Function.prototype">
 <li>内建对象(built-in object)：比如Array（），Array.prototype.<strong>proto</strong>指向什么？Array.prototype也是一个对象，对象就是由 Object（）这个构造函数创建的，因此Array.prototype.<strong>proto</strong> === Object.prototype //true，或者也可以这么理解，所有的内建对象都是由Object()创建而来。</li>
 </ul>
 </li>
-<li>自定义对象：<pre><code>* 默认情况下:
-<span class="comment"><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;&#125;; </span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(); </span><br><span class="line">Foo.prototype.__proto__ === <span class="built_in">Object</span>.prototype<span class="comment">//理由同上</span></span><br></pre></td></tr></table></figure></span>
-</code></pre></li>
+<li>自定义对象：</li>
 </ul>
-<pre><code>* 其他情况：
- (1)
- <span class="comment"><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bar</span><span class="params">()</span></span>&#123;&#125;; <span class="comment">//这时我们想让Foo继承Bar</span></span><br><span class="line">Foo.prototype = <span class="keyword">new</span> Bar(); <span class="comment">//于是</span></span><br><span class="line">Foo.prototype.__proto__ === Bar.prototype <span class="comment">//true</span></span><br></pre></td></tr></table></figure></span>
-
- (2)
- <span class="comment"><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">       <span class="comment">// 我们不想让Foo继承谁，但是我们要自己重新定义Foo的原型</span></span><br><span class="line">      Foo.prototype = &#123;</span><br><span class="line">	      a:<span class="number">10</span>,</span><br><span class="line">	      b:-<span class="number">10</span></span><br><span class="line">	   &#125;</span><br><span class="line"><span class="comment">//这种方式就是用了对象字面量的方式来创建一个对象，根据前文所述      </span></span><br><span class="line">Foo.prototype.__proto__ === Object.prototype</span><br></pre></td></tr></table></figure></span>
-
-
-
-注： 以上两种情况都等于完全重写了Foo.prototype，所以Foo.prototype.constructor也跟着改变了，于是乎constructor这个属性和原来的构造函数Foo（）也就切断了联系。
-</code></pre><ul>
+<p>(一) 默认情况下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;&#125;; </span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(); </span><br><span class="line">Foo.prototype.__proto__ === <span class="built_in">Object</span>.prototype<span class="comment">//理由同上</span></span><br></pre></td></tr></table></figure></p>
+<p>(二)其他情况：<br>(1)<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bar</span><span class="params">()</span></span>&#123;&#125;; <span class="comment">//这时我们想让Foo继承Bar</span></span><br><span class="line">Foo.prototype = <span class="keyword">new</span> Bar(); <span class="comment">//于是</span></span><br><span class="line">Foo.prototype.__proto__ === Bar.prototype <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>(2)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们不想让Foo继承谁，但是我们要自己重新定义Foo的原型</span></span><br><span class="line">Foo.prototype = &#123;</span><br><span class="line">     a:<span class="number">10</span>,</span><br><span class="line">     b:-<span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这种方式就是用了对象字面量的方式来创建一个对象，根据前文所述      </span></span><br><span class="line">Foo.prototype.__proto__ === Object.prototype</span><br></pre></td></tr></table></figure></p>
+<p>注： 以上两种情况都等于完全重写了Foo.prototype，所以Foo.prototype.constructor也跟着改变了，于是乎constructor这个属性和原来的构造函数Foo（）也就切断了联系。</p>
+<ul>
 <li><p>构造函数的隐式原型</p>
-<p>既然是构造函数那么它就是Function（）的实例，因此也就指向Function.prototyp<br>比如 Object.<strong>proto</strong> === Function.prototype</p>
+<p>既然是构造函数那么它就是Function（）的实例，因此也就指向Function.prototype<br>比如 Object.<strong>proto</strong> === Function.prototype</p>
 </li>
 </ul>
 <h3 id="4-_instanceof"><strong>4. instanceof</strong></h3><p>instanceof 操作符的内部实现机制和隐式原型、显式原型有直接的关系。instanceof的左值一般是一个对象，右值一般是一个构造函数，用来判断左值是否是右值的实例。它的内部实现原理是这样的： 设 L instanceof R , 通过判断 L.<strong>proto</strong>.<strong>proto</strong> ….. === R.prototype,最终返回true or false，也就是沿着L的<strong>proto</strong>一直寻找到原型链末端，直到等于R.prototype为止。知道了这个也就知道为什么以下这些奇怪的表达式为什么会得到相应的值了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true </span></span><br><span class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">// true </span></span><br><span class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">//true</span></span><br><span class="line"><span class="built_in">Object</span>  <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span> <span class="keyword">instanceof</span> <span class="built_in">Number</span> <span class="comment">//false</span></span><br></pre></td></tr></table></figure></p>
