@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://m1.yea.im/43P.jpg">
 <meta property="og:image" content="http://m1.yea.im/43Q.jpg">
 <meta property="og:image" content="http://m1.yea.im/43P.jpg">
-<meta property="og:updated_time" content="2015-11-20T16:41:34.000Z">
+<meta property="og:updated_time" content="2015-11-21T08:10:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript中值的访问与参数传递问题">
 <meta name="twitter:description" content="数据类型在 javascript 中数据类型可以分为两类：
@@ -101,6 +101,7 @@
 <li>原始值：存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在<strong>变量访问的位置</strong>。这是因为这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域 - 栈中。这样存储便于迅速查寻变量的值。</li>
 <li>引用值：存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存地址。这是因为：引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。<br><img src="http://m1.yea.im/43N.jpg" alt="image"></li>
 </ul>
+<a id="more"></a>
 <h3 id="不同的内存分配机制也带来了不同的访问机制">不同的内存分配机制也带来了不同的访问机制</h3><p>在javascript中是不允许直接访问保存在堆内存中的对象的，所以在访问一个对象时，首先得到的是这个对象在堆内存中的地址，然后再按照这个地址去获得这个对象中的值，这就是传说中的<strong>按引用访问</strong>。而原始类型的值则是可以直接访问到的。</p>
 <h3 id="复制变量时的不同">复制变量时的不同</h3><ul>
 <li><p>原始值：在将一个保存着原始值的变量复制给另一个变量时，会将原始值的副本赋值给新变量，此后这两个变量是完全独立的，他们只是拥有相同的value而已。<br><img src="http://m1.yea.im/43P.jpg" alt="image"></p>
