@@ -93,11 +93,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Javascript核心原理（一）执行环境、执行环境栈、变量对象、活动对象]]></title>
+    <title><![CDATA[JavaScript核心原理（一）执行环境、执行环境栈、变量对象、活动对象]]></title>
     <link href="http://www.fehacker.com/2015/03/19/javascript-the-core-ec-ecs-ao-vo/"/>
     <id>http://www.fehacker.com/2015/03/19/javascript-the-core-ec-ecs-ao-vo/</id>
     <published>2015-03-18T23:39:25.000Z</published>
-    <updated>2015-11-21T08:22:14.000Z</updated>
+    <updated>2015-11-23T09:26:03.000Z</updated>
     <content type="html"><![CDATA[<h2 id="前言"><strong>前言</strong></h2><p><span class="s1">之前在阅读《Javascript高级程序设计》「4.2执行环境及作用域的」时候，对相关的概念理解得并不是非常的透彻，只是懂了大概的意思。后来在看到「闭包」这一节时书中再一次提到了相关的概念，并且这些是充分理解闭包的必要背景知识，于是这一次我不能再略读了，必须彻彻底底地弄明白。啃了两天的相关文章、资料后，算是有一个比较清晰的认识了，现在记录下来，希望可以帮到同样对相关概念不熟悉的同学，也可以用作自己日后的回顾和修正。</span></p>
 <p><span class="s1">注：Execution Context 可以被翻译为「执行上下文」或者「 执行环境」，文中可能都会用到，大家记住是一个东西就可以了。</span></p>
 <a id="more"></a>
@@ -236,11 +236,11 @@ _每一个执行环境都有一个与之相关的__变量对象__，其中存储
   </entry>
   
   <entry>
-    <title><![CDATA[Javascript中值的访问与参数传递问题]]></title>
+    <title><![CDATA[JavaScript中值的访问与参数传递问题]]></title>
     <link href="http://www.fehacker.com/2014/12/19/call-by-sharing/"/>
     <id>http://www.fehacker.com/2014/12/19/call-by-sharing/</id>
     <published>2014-12-19T05:11:50.000Z</published>
-    <updated>2015-11-21T08:10:06.000Z</updated>
+    <updated>2015-11-23T09:26:28.000Z</updated>
     <content type="html"><![CDATA[<h3 id="数据类型">数据类型</h3><p>在 javascript 中数据类型可以分为两类：</p>
 <ul>
 <li><strong>原始数据类型值</strong> primitive type，比如Undefined,Null,Boolean,Number,String。</li>
