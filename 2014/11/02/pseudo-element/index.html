@@ -1,82 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>什么是伪元素:after和:before | Okiilemon</title>
-  <meta name="viewport" content="width=device-width">
-  <meta name="description" content="或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 什么是伪元素:after和:before · Okiilemon</title><meta name="description" content="或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~
 在学会使用伪元素之前，先来了解一下什么是伪元素以及它们的工作原理。
-很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了">
-<meta property="og:type" content="article">
-<meta property="og:title" content="什么是伪元素:after和:before">
-<meta property="og:url" content="http://www.fehacker.com/2014/11/02/pseudo-element/index.html">
-<meta property="og:site_name" content="Okiilemon">
-<meta property="og:description" content="或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~
-在学会使用伪元素之前，先来了解一下什么是伪元素以及它们的工作原理。
-很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了">
-<meta property="og:updated_time" content="2015-11-21T08:12:01.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="什么是伪元素:after和:before">
-<meta name="twitter:description" content="或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~
-在学会使用伪元素之前，先来了解一下什么是伪元素以及它们的工作原理。
-很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了">
-  
-    <link rel="alternative" href="/atom.xml" title="Okiilemon" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-</head>
-<body>
-  <div id="container">
-    <div class="mobile-nav-panel">
-	<i class="icon-reorder icon-large"></i>
-</div>
-<header id="header">
-	<h1 class="blog-title">
-		<a href="/">Okiilemon</a>
-	</h1>
-	<nav class="nav">
-		<ul>
-			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li><li><a href="/about">About</a></li><li><a href="/links">Links</a></li>
-			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
-			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
-		</ul>
-	</nav>
-	<div id="search-form-wrap">
-		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.fehacker.com"></form>
-	</div>
-</header>
-    <div id="main">
-      <article id="post-pseudo-element" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2014/11/02/pseudo-element/" class="article-date">
-  <time datetime="2014-11-02T04:24:23.000Z" itemprop="datePublished">2014-11-02</time>
-</a>
-		</span>
-		<span class="meta-elements author">okiilemon</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 class="article-title entry-title" itemprop="name">
-      什么是伪元素:after和:before
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<p>或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~</p>
+很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了去达成我们的目的却和结构完全没关系，一名优秀的前端工程师是绝对不会这么干的。那么这个时候，伪元素就该闪亮登场了~ 
+首先还是让我们来看看官方对伪元素的定义吧: Pseudo-elements
+额，为了照顾看见英文就头疼的同学，我尽力翻译一下吧：
+“伪元素在标记语言创建的DOM树之外创造了一种抽象（的对象）。例如：标记语言并不提供可以直接控制元素中第一行内容或第一个字这样的机制，而伪元素就允许开发人员去特指这些无法触及的内容；伪元素也提供了开发人员一种方法，可"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/lemon24.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="stylesheet" href="http://fonts.useso.com/css?family=Source+Sans+Pro:400,600" type="text/css"></head><body><header><a href="/" class="logo-link"><img src="/lemon50.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">HOME</a></li><li class="nav-list-item"><a href="/archives" target="_self" class="nav-list-link">ARCHIVES</a></li><li class="nav-list-item"><a href="/about" target="_self" class="nav-list-link">ABOUT</a></li><li class="nav-list-item"><a href="/links" target="_self" class="nav-list-link">LINKS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h2 class="post-title"><a href="/2014/11/02/pseudo-element/" class="post-title-link">什么是伪元素:after和:before</a></h2><div class="post-meta"><div class="post-time">Nov 2, 2014</div></div><div class="post-content"><p>或许你在很多网页的源码上已经不止一次的见过:before 和 :after了，或者是别人利用伪元素做出各种酷炫效果..看见它俩陌生的面孔是不是有些害怕但又很想征服它们运用在自己的项目中呢？希望读完本篇文章后你就可以和它俩混熟了~</p>
 <p>在学会使用伪元素之前，先来了解一下什么是伪元素以及它们的工作原理。</p>
 <p>很多时候我们希望实现某种效果或是完成某些工作，但是又不希望破坏HTML的语义化，增加一个标签仅仅是为了去达成我们的目的却和结构完全没关系，一名优秀的前端工程师是绝对不会这么干的。那么这个时候，伪元素就该闪亮登场了~ </p>
 <p>首先还是让我们来看看官方对伪元素的定义吧: <a href="http://www.w3.org/TR/selectors/#pseudo-elements" target="_blank" rel="external"><strong>Pseudo-elements</strong></a><br><a id="more"></a></p>
@@ -111,92 +38,14 @@ p:after{
 <p>今天就介绍到这里，在下篇文章中将向大家展示一些伪元素的妙用和那些酷炫效果。</p>
 <p>文章参考：</p>
 <p><a href="http://www.tinghaige.com/understanding-pseudo-element-before-and-after.html" title="理解伪元素:Before和:After" target="_blank" rel="external">理解伪元素:Before和:After</a><br><a href="http://ithelp.ithome.com.tw/question/10128451" title="CSS沒有極限 - 別忘了偽元素" target="_blank" rel="external">CSS沒有極限 - 別忘了偽元素</a><br><a href="http://www.webhek.com/after-before/" title="伪元素::after和::before" target="_blank" rel="external">伪元素::after和::before</a></p>
+</div></article></div></section><footer><div class="paginator"><a href="/2014/12/19/call-by-sharing/" class="prev">上一篇</a><a class="prev"> </a></div><div data-thread-key="2014/11/02/pseudo-element/" data-title="什么是伪元素:after和:before" data-url="http://www.fehacker.com/2014/11/02/pseudo-element/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"fehacker"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
 
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTML-CSS/">HTML/CSS</a>
-  </div>
-
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-    
-<nav id="article-nav">
-  
-    <a href="/2014/12/19/call-by-sharing/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Javascript中值的访问与参数传递问题
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
-</article>
-
-
-
-
- <section id="comments">
-   <!-- 多说评论框 start -->
-   <div class="ds-thread" data-thread-key="post-pseudo-element" data-title="什么是伪元素:after和:before" data-url="http://www.fehacker.com/2014/11/02/pseudo-element/"></div>
-   <!-- 多说评论框 end -->
-   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-   <script type="text/javascript">
-   var duoshuoQuery = {short_name:'fehacker'};
-     (function() {
-       var ds = document.createElement('script');
-       ds.type = 'text/javascript';ds.async = true;
-       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-       ds.charset = 'UTF-8';
-       (document.getElementsByTagName('head')[0] 
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-     })();
-     </script>
-   <!-- 多说公共JS代码 end -->
- </section>
- 
-
-    </div>
-    <div class="mb-search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:www.fehacker.com">
-  </form>
-</div>
-<footer id="footer">
-	<h1 class="footer-blog-title">
-		<a href="/">Okiilemon</a>
-	</h1>
-	<span class="copyright">
-		&copy; 2015 okiilemon<br>
-		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
-		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-	</span>
-</footer>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-  </div>
-</body>
-</html>
+</script></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-70485577-1",'auto');ga('send','pageview');</script><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
